@@ -1,0 +1,105 @@
+.weather-widget {
+    position: relative;
+    background-color: blue;
+    color: white;
+    border-radius: 35px;
+    padding: 20px;
+    width: 100%;
+    /* max-width: 400px; */
+    margin: 0 auto; /* Centering the widget */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Adding a shadow for depth */
+    overflow: hidden; /* Prevents any content from spilling out */
+}
+
+.moon, .sun {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 20px rgba(252, 252, 252, 1.6));
+    transition: transform 0.3s ease-in-out; /* Smooth transition between sun and moon */
+}
+
+.moon {
+    fill: white;
+}
+
+.sun {
+    fill: yellow;
+}
+
+.cloud {
+    fill: lightblue;
+    filter: drop-shadow(0 0 10px rgba(252, 252, 252, 0.8)); /* Softer shadow */
+    width: 80px;
+    height: 80px;
+    animation: movecloud 8s ease-in-out infinite;
+}
+
+/* Adjusted cloud container to prevent it from overlapping the city name */
+.cld-container {
+    width: 400px;
+    position: absolute;
+    top: 160px; /* Adjusted top position to avoid overlapping */
+    left: 0%; 
+    /* transform: translateX(30%); */
+    overflow: hidden; /* Ensure the cloud doesn't overflow the widget */
+}
+
+/* Keyframes for cloud movement within the widget */
+@keyframes movecloud {
+    0%, 100% {
+        transform: translateX(-30px); /* Reduced movement to prevent going outside */
+    }
+    50% {
+        transform: translateX(30px);
+    }
+}
+
+.location-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    background-color: transparent;
+}
+
+.location, .temp, .humidity, .low-high, .feel-like {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.location {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.humidity, .low-high, .feel-like {
+    font-size: 1rem;
+}
+
+/* Adjust positioning for mobile responsiveness */
+@media (max-width: 600px) {
+    .weather-widget {
+        padding: 15px;
+    }
+
+    .moon, .sun, .cloud {
+        width: 60px;
+        height: 60px;
+    }
+
+    .location, .temp, .humidity, .low-high, .feel-like {
+        font-size: 1rem;
+    }
+
+    .temp {
+        font-size: 2rem;
+    }
+}
